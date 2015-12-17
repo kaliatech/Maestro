@@ -23,7 +23,7 @@ For Linux, download pyserial-2.7.tar.gz from http://sourceforge.net/projects/pys
 Example usage of maestro.py:
 
     import maestro.py
-    servo = maestro.Controller()
+    servo = maestro.Controller('/dev/ttyACM0') or a better way is maestro.Controller('/dev/serial/by-id/deviceNameHere')
     servo.setAccel(0,4)      #set servo 0 acceleration to 4
     servo.setTarget(0,6000)  #set servo to move to center position
     servo.close

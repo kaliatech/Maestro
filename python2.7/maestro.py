@@ -19,15 +19,9 @@ class Controller:
     # "USB Chained Mode" may work as well, but hasn't been tested.
     #
     # Pololu protocol allows for multiple Maestros to be connected to a single
-    # communication channel. Each connected device is then indexed by number.
-    # This device number defaults to 0x0C (or 12 in decimal), which this module
-    # assumes.  If two or more controllers are connected to different serial
-    # ports, then you can specify the port number when intiating a controller
-    # object. Ports will typically start at 0 and count by twos.  So with two
-    # controllers ports 0 and 2 would be used.
-    def __init__(self,port=0):
+    # communication channel.
+    def __init__(self, ttyStr):
         # Open the command port
-        ttyStr = '/dev/ttyACM' + str(port)
         self.usb = serial.Serial(ttyStr)
         # Command lead-in and device 12 are sent for each Pololu serial commands.
         self.PololuCmd = chr(0xaa) + chr(0xc)
